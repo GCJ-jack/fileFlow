@@ -1,0 +1,14 @@
+server:
+  port: 9999
+  servlet:
+    context-path: /boot-design
+
+spring:
+  application:
+    name: boot-design
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/teach
+    username: root
+    password: root
