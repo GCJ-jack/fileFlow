@@ -4,7 +4,7 @@ import com.intern.design.bean.User;
 
 public interface FileExport {
 
-    void Export2Db(String string);
-
     FileType supportedFileType();
+
+    void export2Db(String filepath);
 }
