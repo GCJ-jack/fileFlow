@@ -3,12 +3,18 @@ server:
   servlet:
     context-path: /boot-design
 
+logging:
+  level:
+    com.baomidou.mybatisplus.core: debug
+    com.intern.design: debug
+
+
 spring:
   application:
     name: boot-design
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/teach
+    url: jdbc:mysql://localhost:3306/mytest
     username: root
-    password: root
+    password:

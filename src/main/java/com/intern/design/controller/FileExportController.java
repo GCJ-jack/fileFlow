@@ -3,12 +3,14 @@ package com.intern.design.controller;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
+import com.intern.design.fileExport.FileExportClient;
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import sun.reflect.misc.FieldUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,10 +22,10 @@ import java.util.Objects;
 @RequestMapping("/file")
 public class FileExportController {
 
-    private static final String DIR = "data";
+    private static final String DIR = "/Users/guochaojun/Desktop/FileFlow/data";
 
-    @PostMapping("/upload")
-    public String uploadAndExport(MultipartFile file) throws IOException {
+    @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadAndExport(@RequestParam("file") MultipartFile file) throws IOException {
         if(Objects.isNull(file)||file.isEmpty()){
             throw new IllegalArgumentException("文件为空");
         }
@@ -31,7 +33,9 @@ public class FileExportController {
         File saveFile = toSavePath(file.getOriginalFilename()).toFile();
         file.transferTo(saveFile);
 
-        return  saveFile.getAbsolutePath();
+        FileExportClient.export2Db(saveFile);
+
+        return saveFile.getAbsolutePath();
     }
 
     private Path toSavePath(String originalFilename) {

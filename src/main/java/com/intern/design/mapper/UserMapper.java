@@ -5,5 +5,4 @@ import com.intern.design.bean.User;
 
 public interface UserMapper extends BaseMapper<User> {
 
-
 }

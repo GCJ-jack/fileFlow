@@ -26,11 +26,10 @@ public enum FileType {
                     (v1, v2) -> v2
             ));
 
-    private FileType from(String file){
+    public static FileType from(String file){
         if(!VALUE_MAP.containsKey(file)){
             throw new IllegalArgumentException("找不到对应类型: " + file);
         }
-
         return VALUE_MAP.get(file);
     }
 

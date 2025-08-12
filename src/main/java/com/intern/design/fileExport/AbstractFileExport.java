@@ -51,7 +51,8 @@ public abstract class AbstractFileExport implements FileExport {
 
     private void saveUsers(List<User> users) {
         // todo !!!真实开发中, 禁止在循环中去做数据库操作, 禁止在循环中做远程调用
-        users.forEach(userMapper::insert);
+        users.forEach(u -> { userMapper.insert(u); System.out.println("newId=" + u.getId()); });
+
     }
 
 
