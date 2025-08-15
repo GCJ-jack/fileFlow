@@ -1,6 +1,7 @@
 package com.intern.design.bean;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.intern.design.enums.ArticleState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +26,11 @@ public class Article {
     private ArticleState state;
 
     private Long creatorId;
+
     private Long updaterId;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTime;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
 
 }

@@ -2,9 +2,11 @@ package com.intern.design.enums;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum ArticleState {
 
@@ -17,5 +19,4 @@ public enum ArticleState {
     @JsonValue
     private final int code;
     private final String desc;
-
 }

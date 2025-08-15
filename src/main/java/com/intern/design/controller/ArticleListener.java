@@ -1,0 +1,44 @@
+package com.intern.design.controller;
+
+import com.intern.design.bean.Article;
+import com.intern.design.enums.ArticleState;
+import com.intern.design.service.ArticleService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/article")
+@RequiredArgsConstructor
+public class ArticleListener {
+
+    @Autowired
+    private final ArticleService articleService;
+
+    @GetMapping("/{id}")
+    public Article get(@PathVariable Long id){
+        return articleService.getById(id);
+    }
+
+    @PostMapping("/save")
+    public Article save(@RequestBody Article articleReq) {
+        Article article = Article.builder().title(articleReq.getTitle())
+                .content(articleReq.getContent())
+                .state(ArticleState.TEMP).build();
+
+        articleService.save(article);
+
+        return articleService.getById(article.getId());
+    }
+
+    @PostMapping("/update")
+    public Article update(@RequestBody Article articleReq){
+        Article article = articleService.getById(articleReq.getId());
+        article.setTitle(articleReq.getTitle());
+        article.setContent(articleReq.getContent());
+
+        return articleService.getById(articleReq.getId());
+    }
+
+}
