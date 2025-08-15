@@ -1,5 +1,7 @@
 package com.intern.design.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.intern.design.enums.ArticleState;
@@ -16,7 +18,7 @@ import java.time.LocalDateTime;
 @Builder
 @TableName("article")
 public class Article {
-
+    @TableId(type = IdType.AUTO)
     private Long id;
 
     private String title;
