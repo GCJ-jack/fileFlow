@@ -1,4 +1,13 @@
 server:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 3218818005g@gmail.com
+    password: pcjyzglqwvvodgdf
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.debug: false
   port: 9999
   servlet:
     context-path: /boot-design

@@ -1,11 +1,14 @@
 package com.intern.design.action;
 
 
+import cn.hutool.extra.spring.SpringUtil;
 import com.intern.design.annotation.StatesOnTransition;
 import com.intern.design.bean.Article;
 import com.intern.design.enums.ArticleState;
+import com.intern.design.event.BaseEvent;
 import com.intern.design.service.ArticleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.statemachine.annotation.EventHeaders;
 import org.springframework.statemachine.annotation.WithStateMachine;
 import org.springframework.stereotype.Component;
@@ -25,6 +28,14 @@ public class ArticleStateAction {
         Article article = (Article) headers.get("article");
         article.setState(ArticleState.PROCESSING);
         articleService.updateById(article);
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+
+        simpleMailMessage.setTo("3218818005g@gmail.com");
+        simpleMailMessage.setSubject("文件导出到数据库完成");
+        simpleMailMessage.setText("文件导出到数据库完成了, 请及时查收");
+
+        SpringUtil.publishEvent(new BaseEvent<>(simpleMailMessage,this));
     }
 
     @StatesOnTransition(source = ArticleState.PROCESSING, target = ArticleState.APPROVED)
