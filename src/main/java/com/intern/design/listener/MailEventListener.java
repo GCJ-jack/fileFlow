@@ -14,6 +14,8 @@ import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Slf4j
 @Component
 public class MailEventListener {
@@ -27,6 +29,7 @@ public class MailEventListener {
     public void listen(BaseEvent<SimpleMailMessage> event){
 
         SimpleMailMessage simpleMailMessage = event.getData();
+        log.info("Mail sent to={}, subject={}", Arrays.toString(simpleMailMessage.getTo()), simpleMailMessage.getSubject());
         mailService.sendText(simpleMailMessage);
     }
 

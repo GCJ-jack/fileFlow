@@ -15,7 +15,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/article")
 @RequiredArgsConstructor
-public class ArticleListener {
+public class ArticleController {
 
     @Autowired
     private final ArticleService articleService;

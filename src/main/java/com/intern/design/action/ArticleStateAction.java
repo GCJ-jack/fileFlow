@@ -14,7 +14,6 @@ import org.springframework.statemachine.annotation.WithStateMachine;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Component
 @WithStateMachine( name = "stateMachine")
@@ -32,6 +31,7 @@ public class ArticleStateAction {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
         simpleMailMessage.setTo("3218818005g@gmail.com");
+        simpleMailMessage.setFrom("3218818005g@gmail.com");
         simpleMailMessage.setSubject("文件导出到数据库完成");
         simpleMailMessage.setText("文件导出到数据库完成了, 请及时查收");
 
