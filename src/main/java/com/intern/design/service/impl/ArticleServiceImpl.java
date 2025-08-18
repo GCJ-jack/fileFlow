@@ -68,7 +68,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
                         .map(ArticleDTO::from)
                         .collect(Collectors.toList());
 
+                export2Local(articleDTOS,"/Users/guochaojun/Desktop/FileFlow/"
+                        + lastMonthStr + "_" + pageNum + ".xlsx");
 
+                export2Oss(articleDTOS,lastMonthStr + "_" + pageNum + ".xlsx");
 
             });
 
