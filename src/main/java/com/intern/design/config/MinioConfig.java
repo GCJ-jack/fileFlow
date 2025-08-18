@@ -18,7 +18,7 @@ public class MinioConfig {
 
     private String accessKey;
 
-    private String secreKey;
+    private String secretKey;
 
     private String url;
 
@@ -26,9 +26,9 @@ public class MinioConfig {
 
     @Bean
     public MinioClient minioClient(){
-        return minioClient().builder()
+        return MinioClient.builder()
                 .endpoint(url)
-                .credentials(accessKey,secreKey)
+                .credentials(accessKey,secretKey)
                 .build();
     }
 }

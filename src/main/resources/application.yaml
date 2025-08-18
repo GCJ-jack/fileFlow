@@ -29,6 +29,15 @@ spring:
       mail.smtp.auth: true
       mail.smtp.ssl.enable: true
       mail.debug: true           # 临时开调试日志，定位更方便；OK后可关
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: delFlag # 全局逻辑删除的实体字段名(1-已删除 0-未删除)
+      column-format: "`%s`"
+
 
 minio:
   access-key: admin
