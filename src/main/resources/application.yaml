@@ -42,5 +42,5 @@ mybatis-plus:
 minio:
   access-key: admin
   secret-key: password
-  url: http://localhost:9001
+  url: http://localhost:9000
   bucket-name: export-files

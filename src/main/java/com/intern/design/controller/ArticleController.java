@@ -7,7 +7,6 @@ import com.intern.design.handler.ArticleStateHandler;
 import com.intern.design.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Objects;
@@ -76,5 +75,12 @@ public class ArticleController {
 
         return article;
     }
+
+    @PostMapping("/last_month")
+    public String exportLastMonth(){
+        articleService.export();
+        return "上个月数据导出";
+    }
+
 
 }

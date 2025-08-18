@@ -37,12 +37,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     public void export(){
 
         LocalDateTime start = YearMonth.now()
-                .minusMonths(1)
                 .atDay(1)
                 .atTime(LocalTime.MIN);
 
         LocalDateTime end = YearMonth.now()
-                .minusMonths(1)
                 .atEndOfMonth()
                 .atTime(LocalTime.MAX);
 
